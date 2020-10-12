@@ -1,6 +1,22 @@
+#We use encode and decode because when data goes to outside world, it has to be converted from unicode string to UTF-8 and back from UTF-8 to unicode string.
 #Read contents from web
 
 import urllib.request, urllib.parse, urllib.error
 fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
 for line in fhand:
     print(line.decode().strip())
+    
+    
+#dictonary for sentence and its count - not working
+import urllib.request, urllib.parse, urllib.error
+
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+counts = dict()
+y=list()
+for line in fhand:
+    words=line.decode()
+    for word in words:
+        counts[words] = counts.get(word,0)+1
+print(counts)
+    
+
